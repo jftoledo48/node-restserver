@@ -15,8 +15,17 @@ app.use(bodyParser.json());
 
 app.use(require('./routes/usuario'));
 
-mongoose.connect('mongodb://localhost:27017/cafe', {
+// // Conexion a base de datos local
+// mongoose.connect('mongodb://localhost:27017/cafe', {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true
+// });
+
+// Conexion a mongo atlas:
+mongoose.connect(process.env.URLDB, {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true
 });
 
