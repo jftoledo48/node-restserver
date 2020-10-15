@@ -20,7 +20,7 @@ process.env.CADUCIDAD_TOKEN = 60*60*24*30
 // SEED de autenticación
 // ====================================
 
-process.env.SEED = process.env.SEED || 'seed-de-desarrollo'
+process.env.SEED = process.env.SEED || 'seed-de-desarrollo';
 
 // ===================================
 // DATA BASSE: Define url to conection
@@ -33,3 +33,9 @@ if (process.env.NODE_ENV === 'dev'){
     urlDB = process.env.MONGO_URI;
 }
 process.env.URLDB = urlDB;
+
+
+// ===================================
+// CLIENT ID Google
+// ===================================
+process.env.CLIENT_ID = process.env.CLIENT_ID || '235427841687-mjob0uujmfggja8u8rbpia8h6ro8ts53.apps.googleusercontent.com';
