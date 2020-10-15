@@ -25,7 +25,7 @@ app.get('/usuarios', verificaToken, function (req, res) {
                 });
             }
 
-            Usuario.count({estado:true}, (err, conteo) => {
+            Usuario.countDocuments({estado:true}, (err, conteo) => {
                 res.json({
                     ok: true,
                     usuarios,
@@ -39,6 +39,7 @@ app.get('/usuarios', verificaToken, function (req, res) {
 
 app.post('/usuarios', [verificaToken, verificaAdmin_Role], function (req, res) {
     let body = req.body;
+    console.log(body);
 
     let usuario = new Usuario({
         nombre: body.nombre,

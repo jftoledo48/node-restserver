@@ -7,8 +7,11 @@ const jwt = require('jsonwebtoken');
 let verificaToken = (req, res, next) => {
 
     let token = req.get('token');
+    //console.log(token);
 
     jwt.verify(token, process.env.SEED, (err, decoded) => {
+
+        //console.log(decoded);
 
         if (err) {
             return res.status(401).json({
@@ -19,7 +22,7 @@ let verificaToken = (req, res, next) => {
             });
         }
 
-        req.usuario = decoded.usuario;
+        req.usuario = decoded.data;
         next();
 
     });
@@ -33,11 +36,13 @@ let verificaToken = (req, res, next) => {
 // =====================
 let verificaAdmin_Role = (req, res, next) => {
 
-    let usuario = jwt.decode(req.get('token'));
+    let usuario = req.usuario;
+    //console.log(usuario);
 
     if (usuario.role === 'ADMIN_ROLE') {
         next();
     } else {
+
         return res.json({
             ok: false,
             err: {
